@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace ApiDotNetCore
 {
@@ -20,7 +21,22 @@ namespace ApiDotNetCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApiContext>(opt => opt.UseSqlite("Data Source=api.db"));
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                    Title = "Events API",
+                    Version = "v1",
+                    Description = "Demo API for demo Xamarin app",
+                    Contact = new Contact
+                    {
+                        Name = "Huseyin Erdinc",
+                        Email = "huseyin.erdinc@preciofishbone.se"
+                    }
+                });
+            });
             services.AddMvc();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -31,7 +47,16 @@ namespace ApiDotNetCore
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Events API v1.0");
+            });
+
+
+            app.UseStaticFiles();
             app.UseMvc();
+
         }
     }
 }

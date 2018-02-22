@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20180221162618_new models.cs" />
+    <Compile Remove="Migrations\20180221162618_new models.Designer.cs" />
+    <Compile Remove="Migrations\20180221163023_add primary key to eventattendees.cs" />
+    <Compile Remove="Migrations\20180221163023_add primary key to eventattendees.Designer.cs" />
+    <Compile Remove="Migrations\20180221163314_eventAttendees.cs" />
+    <Compile Remove="Migrations\20180221163314_eventAttendees.Designer.cs" />
+    <Compile Remove="Migrations\20180221163531_add mdoels.cs" />
+    <Compile Remove="Migrations\20180221163531_add mdoels.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -13,6 +24,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Design" Version="1.1.5" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>
